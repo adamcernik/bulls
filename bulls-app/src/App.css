@@ -1,0 +1,37 @@
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Custom styles for DataGrid */
+.MuiDataGrid-root {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.MuiDataGrid-columnHeader {
+  background-color: #f5f5f7;
+  font-weight: bold;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .MuiDataGrid-root {
+    font-size: 0.85rem;
+  }
+  
+  .MuiDataGrid-columnHeaderTitle {
+    font-size: 0.85rem;
+  }
+}
