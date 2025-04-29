@@ -1,0 +1,47 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main  # or master, depending on your default branch name
+    paths:
+      - 'bulls-app/**'  # Only trigger when changes are made in the bulls-app directory
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: bulls-app/package-lock.json
+      
+      - name: Install Dependencies
+        run: |
+          cd bulls-app
+          npm ci
+      
+      - name: Build React App
+        run: |
+          cd bulls-app
+          npm run build
+        env:
+          CI: false  # This prevents the build from failing on warnings
+      
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BULLS }}'
+          channelId: live
+          projectId: bulls-6db5a
+          entryPoint: './bulls-app'
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels 
