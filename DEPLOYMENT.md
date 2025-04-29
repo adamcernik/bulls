@@ -1,6 +1,6 @@
 # Bulls App Deployment Guide
 
-This guide documents the process for deploying the Bulls application to Firebase Hosting.
+This guide documents the process for deploying the Bulls application to both GitHub Pages and Firebase Hosting.
 
 ## Repository Structure
 
@@ -11,19 +11,39 @@ The Bulls project has the following structure:
 
 ## Prerequisites
 
-- Firebase CLI installed (locally or globally)
-- Firebase account with access to the Bulls project (`bulls-6db5a`)
-- GitHub repository cloned locally
+- Node.js and npm installed
+- Firebase CLI installed (locally or globally) for Firebase deployments
+- GitHub account with access to the repository for GitHub Pages
+- Firebase account with access to the Bulls project (`bulls-6db5a`) for Firebase deployments
 
 ## Deployment Methods
 
 You can deploy the Bulls app using any of the following methods:
 
-### Method 1: Manual Deployment
+### Method 1: GitHub Pages Deployment
 
-#### 1. Build the Application
+The app is currently deployed to GitHub Pages at: https://adamcernik.github.io/bulls/
 
-First, build the React application:
+To deploy to GitHub Pages:
+
+```bash
+# Navigate to the bulls-app directory
+cd bulls-app
+
+# Run the GitHub Pages deployment script
+npm run deploy
+```
+
+This script:
+1. Builds the application
+2. Deploys it to the `gh-pages` branch
+3. Makes it available at https://adamcernik.github.io/bulls/
+
+### Method 2: Firebase Hosting Deployment
+
+The app is also deployed to Firebase Hosting at: https://bulls-6db5a.web.app
+
+#### Manual Firebase Deployment
 
 ```bash
 # Navigate to the bulls-app directory
@@ -31,20 +51,12 @@ cd bulls-app
 
 # Build the React application
 npm run build
-```
 
-This command creates an optimized production build in the `build` folder.
-
-#### 2. Deploy to Firebase Hosting
-
-After building the app, deploy it to Firebase Hosting:
-
-```bash
-# Deploy only the hosting portion
+# Deploy to Firebase Hosting
 npx firebase deploy --only hosting
 ```
 
-### Method 2: Deployment Script
+#### Using the Deployment Script
 
 For convenience, you can use the deployment script we've created:
 
@@ -53,11 +65,11 @@ For convenience, you can use the deployment script we've created:
 ./deploy-bulls-app.sh
 ```
 
-This script handles both building and deploying the app.
+This script handles both building and deploying the app to Firebase.
 
 ### Method 3: Automated Deployment (GitHub Actions)
 
-We've set up GitHub Actions to automatically deploy the app whenever changes are pushed to the main branch of the repository.
+We've set up GitHub Actions to automatically deploy the app to Firebase whenever changes are pushed to the main branch of the repository.
 
 #### How It Works
 
@@ -89,31 +101,40 @@ To enable automated deployments, you need to add a Firebase Service Account secr
 
 ## Deployment Configuration
 
-The key configuration files for our Firebase deployment are:
+The key configuration files for our deployments are:
 
+### GitHub Pages
+- **bulls-app/package.json**: Contains the `homepage` field and deployment scripts
+
+### Firebase Hosting
 - **firebase.json**: Configures Firebase services including hosting settings and cache control
-- **package.json**: Contains the `homepage` field which is set to `https://bulls-6db5a.web.app`
+- **bulls-app/firebase.json**: Configures Firebase services for the app directory
 - **.firebaserc**: Specifies the Firebase project ID (`bulls-6db5a`)
-- **.github/workflows/firebase-deploy.yml**: Configures automated GitHub deployments
+- **.github/workflows/firebase-deploy.yml**: Configures automated GitHub Actions deployments
 
 ## Important Notes
 
-1. **Routing**: We use HashRouter for client-side routing to ensure proper handling of routes in Firebase Hosting
+1. **Routing**: We use HashRouter for client-side routing to ensure proper handling of routes in both GitHub Pages and Firebase Hosting
 
 2. **Cache Control**: Cache headers are configured in `firebase.json` to optimize load times while ensuring fresh content
 
-3. **GitHub Integration**: Source code is hosted on GitHub, and can be automatically deployed to Firebase Hosting
+3. **GitHub Integration**: Source code is hosted on GitHub, and can be automatically deployed to Firebase Hosting or manually to GitHub Pages
 
-4. **Firebase Console**: You can monitor the deployment and site metrics at:
+4. **Firebase Console**: You can monitor the Firebase deployment and site metrics at:
    https://console.firebase.google.com/project/bulls-6db5a/overview
 
 ## Troubleshooting
 
 If you encounter issues during deployment:
 
-1. **Authentication Issues**: Run `firebase login` to authenticate with Firebase
+1. **GitHub Pages Issues**:
+   - Check that the `homepage` field in package.json is set to `https://adamcernik.github.io/bulls`
+   - Verify your GitHub authentication is working
+   - Check permissions on the repository
 
-2. **Build Errors**: Check for any error messages during the build process 
+2. **Firebase Issues**:
+   - Run `firebase login` to authenticate with Firebase
+   - Check for any error messages during the build process 
 
 3. **Loading Issues**: If the app loads but appears stuck at loading:
    - Check browser console for errors
@@ -125,6 +146,7 @@ If you encounter issues during deployment:
    - Verify that the Firebase service account secret is correctly added
    - Make sure your branch name matches the one in the workflow file
 
-## Deployed Application
+## Deployed Application URLs
 
-The Bulls app is deployed and accessible at: https://bulls-6db5a.web.app 
+- GitHub Pages: https://adamcernik.github.io/bulls/
+- Firebase Hosting: https://bulls-6db5a.web.app 
