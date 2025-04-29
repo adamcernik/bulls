@@ -3,98 +3,104 @@ const XLSX = require('xlsx');
 const fs = require('fs');
 const path = require('path');
 
-// Main function to read Excel and convert to JSON
-const convertExcelToJSON = () => {
-  try {
-    // Path to the Excel file
-    const excelFilePath = path.join(__dirname, '../../public/sklad_bulls.xls');
-    console.log('Reading Excel file from:', excelFilePath);
+console.log('Starting Excel to JSON conversion...');
 
-    // Read the Excel file
+/**
+ * Convert Excel file to JSON and save to file
+ * @param {string} excelFilePath - Path to Excel file
+ * @returns {Array} - Array of products
+ */
+function convertExcelToJSON(excelFilePath) {
+  try {
+    // Check if Excel file exists
+    if (!fs.existsSync(excelFilePath)) {
+      console.error(`Error: Excel file not found at ${excelFilePath}`);
+      process.exit(1);
+    }
+
+    console.log(`Reading Excel file: ${excelFilePath}`);
     const workbook = XLSX.readFile(excelFilePath);
-    
-    // Get the first sheet
     const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
+    const sheet = workbook.Sheets[sheetName];
     
     // Convert to JSON
-    const jsonData = XLSX.utils.sheet_to_json(worksheet);
-    console.log(`Extracted ${jsonData.length} rows from Excel file`);
+    const rawData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    console.log(`Raw Excel data: ${rawData.length} rows`);
     
-    if (jsonData.length === 0) {
-      console.error('No data found in Excel file');
-      return;
-    }
+    // Filter out empty rows
+    const rows = rawData.filter(row => row.length > 0);
+    console.log(`After filtering empty rows: ${rows.length} rows`);
     
-    // Log sample of the first row to help debug column names
-    console.log('Sample row keys:', Object.keys(jsonData[0]));
-    console.log('Sample first row:', JSON.stringify(jsonData[0], null, 2));
+    // Get header and data
+    const header = rows[0];
+    const data = rows.slice(1);
     
-    // Transform data to our product format
-    const products = jsonData
-      .filter(row => {
-        // Skip header rows or empty rows
-        if (row.__EMPTY === 'Kód' || !row.__EMPTY_1) {
-          return false;
-        }
-        // Skip if the row doesn't have a model name (the name is in __EMPTY_1)
-        if (!row.__EMPTY_1 || row.__EMPTY_1.trim() === '') {
-          return false;
-        }
-        return true;
-      })
+    // Transform data
+    const products = data
+      .filter(row => row[0]) // Filter out rows without a model
       .map((row, index) => {
-        // Extract product data from specific columns
-        const model = row.__EMPTY_1 || ''; // Model name is in __EMPTY_1
-        const price = parseFloat(row.__EMPTY_4) || 0; // Price is in __EMPTY_4
-        const discountPrice = parseFloat(row.__EMPTY_5) || 0; // Discount price is in __EMPTY_5
-        const category = "E-Bike"; // Default category since it's not specified in the Excel
-        const notes = row.__EMPTY_3 || ''; // Notes in __EMPTY_3
-        const code = row.__EMPTY || ''; // Product code in __EMPTY
-        const quantity = row.__EMPTY_2 || 0; // Quantity in __EMPTY_2
+        const battery = row[4] ? row[4].toString() : '';
+        const motor = row[5] ? row[5].toString() : '';
         
-        console.log(`Processing product: ${model}`);
-        
+        // Extract values from the row
         return {
-          id: `product-${index + 1}`,
-          model: model,
-          category: category,
-          price: price,
-          discountPrice: discountPrice,
-          code: String(code),
-          quantity: parseInt(quantity) || 0,
-          notes: notes,
-          battery: extractBatteryInfo(model),
-          motor: extractMotorInfo(model),
-          range: "", // Not available in the Excel
-          weight: 0, // Not available in the Excel
-          description: `${model} - ${notes}`.trim(),
-          imageUrl: "",
-          createdAt: new Date().toISOString()
+          id: `p${index + 1}`,
+          model: row[0] ? row[0].toString() : '',
+          category: row[1] ? row[1].toString() : '',
+          price: row[2] ? parseFloat(row[2]) : 0,
+          discount: row[3] ? parseFloat(row[3]) : 0,
+          battery,
+          motor,
+          action: row[6] ? parseFloat(row[6]) : 0,
         };
       });
     
-    console.log(`Processed ${products.length} valid products`);
+    console.log(`Transformed into ${products.length} product objects`);
     
-    // Save to a JSON file
-    const outputPath = path.join(__dirname, '../../public/products.json');
-    fs.writeFileSync(outputPath, JSON.stringify(products, null, 2));
-    console.log(`JSON data saved to ${outputPath}`);
+    // Ensure output directories exist
+    const dataDir = path.join(__dirname, '../../public/data');
+    if (!fs.existsSync(dataDir)) {
+      console.log(`Creating directory: ${dataDir}`);
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
     
-    // Also create a data.js file that can be imported in the app
-    const dataJsPath = path.join(__dirname, '../../src/data/products.js');
-    fs.mkdirSync(path.dirname(dataJsPath), { recursive: true });
+    // Save to JSON file
+    const jsonFilePath = path.join(dataDir, 'products.json');
+    fs.writeFileSync(jsonFilePath, JSON.stringify(products, null, 2));
+    console.log(`JSON data saved to ${jsonFilePath}`);
     
-    const jsContent = `// Auto-generated from Excel file
+    // Create data.js for import
+    const jsDir = path.join(__dirname, '../../src/data');
+    if (!fs.existsSync(jsDir)) {
+      console.log(`Creating directory: ${jsDir}`);
+      fs.mkdirSync(jsDir, { recursive: true });
+    }
+    
+    const jsFilePath = path.join(jsDir, 'data.js');
+    const jsContent = `// Auto-generated from Excel on ${new Date().toISOString()}
 export const products = ${JSON.stringify(products, null, 2)};
 `;
-    fs.writeFileSync(dataJsPath, jsContent);
-    console.log(`JavaScript data saved to ${dataJsPath}`);
+    fs.writeFileSync(jsFilePath, jsContent);
+    console.log(`JavaScript data saved to ${jsFilePath}`);
     
+    return products;
   } catch (error) {
-    console.error('Error converting Excel to JSON:', error);
+    console.error('Error processing Excel file:', error);
+    process.exit(1);
   }
-};
+}
+
+// Path to the Excel file
+const excelFilePath = path.join(__dirname, '../../public/sklad_bulls.xls');
+
+try {
+  const products = convertExcelToJSON(excelFilePath);
+  console.log(`Successfully extracted ${products.length} products from Excel file`);
+  process.exit(0);
+} catch (error) {
+  console.error('Excel to JSON conversion failed:', error);
+  process.exit(1);
+}
 
 // Helper function to extract battery information from the model name
 function extractBatteryInfo(modelName) {
@@ -122,7 +128,4 @@ function extractMotorInfo(modelName) {
   if (modelName.includes("Aminga")) return "Bosch Active Line Plus";
   
   return "Unknown";
-}
-
-// Run the conversion
-convertExcelToJSON(); 
+} 

@@ -167,7 +167,7 @@ export const addProduct = async (product: Omit<Product, 'id'>): Promise<Product>
 
 // Update an existing product
 export const updateProduct = async (productId: string, updates: Partial<Product>): Promise<void> => {
-  console.log(`Updating product with ID: ${productId} (Mock mode: ${useMockData})`);
+  console.log(`Updating product with ID: ${productId} (Mock mode: ${useMockData})`, updates);
   
   const updatesWithMetadata = {
     ...updates,
@@ -186,18 +186,37 @@ export const updateProduct = async (productId: string, updates: Partial<Product>
   }
   
   try {
-    await updateDoc(doc(db, PRODUCTS_COLLECTION, productId), updatesWithMetadata);
+    const docRef = doc(db, PRODUCTS_COLLECTION, productId);
+    console.log(`Attempting to update document: ${PRODUCTS_COLLECTION}/${productId}`, updatesWithMetadata);
+    
+    // First verify the document exists
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      throw new Error(`Document ${productId} does not exist in ${PRODUCTS_COLLECTION}`);
+    }
+    
+    // Then update the document
+    await updateDoc(docRef, updatesWithMetadata);
+    console.log(`Document ${productId} successfully updated with:`, updatesWithMetadata);
   } catch (error) {
     console.error(`Error updating product ${productId}:`, error);
     
-    // Try to update mock data
+    if (error instanceof Error) {
+      console.error('Error details:', error.message, error.stack);
+    }
+    
+    // Try to update mock data as fallback
     const index = mockProducts.findIndex(p => p.id === productId);
     if (index !== -1) {
       mockProducts[index] = {
         ...mockProducts[index],
         ...updatesWithMetadata
       };
+      console.log(`Updated mock data for ${productId} as fallback`);
     }
+    
+    // Re-throw the error to let the component handle it
+    throw error;
   }
 };
 

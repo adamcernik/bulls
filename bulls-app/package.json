@@ -2,11 +2,12 @@
   "name": "bulls-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bulls-6db5a.web.app",
   "dependencies": {
-    "@emotion/react": "^11.11.4",
+    "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^7.0.2",
-    "@mui/material": "^5.15.14",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.0",
     "@mui/x-data-grid": "^6.19.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -15,10 +16,12 @@
     "@types/node": "^16.18.91",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
-    "firebase": "^10.10.0",
+    "date-fns": "^4.1.0",
+    "firebase": "^9.22.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
+    "react-router-dom": "^7.5.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
@@ -29,7 +32,9 @@
     "start": "PORT=3005 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --no-history"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "firebase-admin": "^13.3.0",
+    "gh-pages": "^6.3.0"
   }
 }

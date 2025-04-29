@@ -15,7 +15,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO 1 29\" 750 Wh | dark petrol - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.900Z"
   },
   {
     "id": "product-2",
@@ -32,7 +32,7 @@ export const products = [
     "weight": 0,
     "description": "Grinder EVO 500 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.900Z"
   },
   {
     "id": "product-3",
@@ -49,7 +49,7 @@ export const products = [
     "weight": 0,
     "description": "Coppehead EVO 3 Wave 750 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-4",
@@ -66,7 +66,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO EN1 Enduro 625 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-5",
@@ -83,7 +83,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM2 Carbon 750 Wh - 1xKristian,1xJirka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-6",
@@ -100,7 +100,7 @@ export const products = [
     "weight": 0,
     "description": "E-Stream EVO 2, 27,5\" 555 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.219Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-7",
@@ -117,7 +117,7 @@ export const products = [
     "weight": 0,
     "description": "E-Stream EVO 2, 27,5\" 555 Wh -  Kolomat bez AKKU",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-8",
@@ -134,7 +134,7 @@ export const products = [
     "weight": 0,
     "description": "E-Stream EVO AM 4 925 Wh | Black/Silver - 1xSyrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-9",
@@ -151,7 +151,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AMSL1 Carbon 750 Wh - 1xCellu,1x Syr.",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-10",
@@ -168,7 +168,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AMSL1 Carbon 750 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-11",
@@ -185,7 +185,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga EVA 2, 27,5\" Wave | Grey/Turq 500 Wh - Alpin",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-12",
@@ -202,7 +202,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga EVA 2, 27,5\" Wave | Grey/Turquoise -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-13",
@@ -219,7 +219,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga EVA 2, 27,5\" Wave | Berry - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-14",
@@ -236,7 +236,7 @@ export const products = [
     "weight": 0,
     "description": "Copperhead EVO 2 Wave 750 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-15",
@@ -253,7 +253,7 @@ export const products = [
     "weight": 0,
     "description": "Copperhead EVO AM2 750 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-16",
@@ -270,7 +270,7 @@ export const products = [
     "weight": 0,
     "description": "Copperhead EVO 2, 29\" 750 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-17",
@@ -287,7 +287,7 @@ export const products = [
     "weight": 0,
     "description": "Copperhead EVO 2, 29\" 750 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-18",
@@ -304,7 +304,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO TR1 750 Wh | Blue -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-19",
@@ -321,7 +321,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO TR1 750 Wh | Blue - 1xHK ,1xSyrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-20",
@@ -338,7 +338,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO TR - I 750 Wh - Syrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-21",
@@ -355,7 +355,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM1 625 Wh | White - na cestě do skladu",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-22",
@@ -372,7 +372,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM1 750 Wh | White -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-23",
@@ -389,7 +389,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM1 750 Wh | Green Em. - na cestě do skladu",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-24",
@@ -406,7 +406,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM1 750 Wh | Green Em. - na cestě do skladu",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-25",
@@ -423,7 +423,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM 1 750 Wh | dark petrol - 2xna cestě do skladu",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-26",
@@ -440,7 +440,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM 1 750 Wh | dark petrol -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-27",
@@ -457,7 +457,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM2 Carbon 750 Wh Blue -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.220Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-28",
@@ -474,7 +474,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM2 Carbon 750 Wh Orange - 1xHK",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-29",
@@ -491,7 +491,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM2 Carbon 750 Wh Orange -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-30",
@@ -508,7 +508,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM3 750 Wh | Black - 1xSyrovátka",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-31",
@@ -525,7 +525,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM3 750 Wh | Black -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-32",
@@ -542,7 +542,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM4 750 Wh | Grey - Petra test",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-33",
@@ -559,7 +559,7 @@ export const products = [
     "weight": 0,
     "description": "SONIC EVO AM4 750 Wh | Grey - Eva test",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-34",
@@ -576,7 +576,7 @@ export const products = [
     "weight": 0,
     "description": "Wildcross -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-35",
@@ -593,7 +593,7 @@ export const products = [
     "weight": 0,
     "description": "Sharptail 1 -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-36",
@@ -610,7 +610,7 @@ export const products = [
     "weight": 0,
     "description": "Duro -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-37",
@@ -627,7 +627,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga 1 | Black/Pink -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-38",
@@ -644,7 +644,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga 2 -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-39",
@@ -661,7 +661,7 @@ export const products = [
     "weight": 0,
     "description": "Aminga 3 -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-40",
@@ -678,7 +678,7 @@ export const products = [
     "weight": 0,
     "description": "Wild Edge Trail -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-41",
@@ -695,7 +695,7 @@ export const products = [
     "weight": 0,
     "description": "AKKU AMSL 1  725 Wh  - do kola ve skladu",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-42",
@@ -712,7 +712,7 @@ export const products = [
     "weight": 0,
     "description": "BMZ 750 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-43",
@@ -729,7 +729,7 @@ export const products = [
     "weight": 0,
     "description": "BMZ 925 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-44",
@@ -746,7 +746,7 @@ export const products = [
     "weight": 0,
     "description": "BMZ 650 Wh -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-45",
@@ -763,7 +763,7 @@ export const products = [
     "weight": 0,
     "description": "Bosch 750 Wh horizontal -",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   },
   {
     "id": "product-46",
@@ -780,6 +780,6 @@ export const products = [
     "weight": 0,
     "description": "VUCA AM2/44 - 2 ks na skladě pro Sloger - není fa",
     "imageUrl": "",
-    "createdAt": "2025-04-27T16:12:09.221Z"
+    "createdAt": "2025-04-28T20:04:11.901Z"
   }
 ];

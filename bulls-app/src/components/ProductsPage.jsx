@@ -1,17 +1,18 @@
 import React from 'react';
 import { Typography, Box } from '@mui/material';
-import ProductsDataGrid from './ProductsDataGrid';
+import ProductsTable from './ProductsTable';
 
-const ProductsPage = () => {
+const ProductsPage = ({ setDbOk, adminTab, setAdminTab }) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Typography variant="h4" component="h1" gutterBottom>
         Sklad Bulls E-Bikes
       </Typography>
-      
-      <Box sx={{ width: '100%' }}>
-        <ProductsDataGrid />
-      </Box>
+      <ProductsTable
+        setDbOk={setDbOk}
+        adminTab={adminTab}
+        setAdminTab={setAdminTab}
+      />
     </Box>
   );
 };
