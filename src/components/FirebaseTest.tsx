@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Typography, Box, Paper, CircularProgress } from '@mui/material';
 import { collection, addDoc, getDoc, doc, getDocs, query, limit, getFirestore, FirestoreError } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signInAnonymously } from 'firebase/auth';
 import { db, auth } from '../firebase';
 
 const FirebaseTest: React.FC = () => {
@@ -60,50 +60,31 @@ const FirebaseTest: React.FC = () => {
 
   // Check authentication state
   useEffect(() => {
-    addDebugLog('Setting up authentication listener');
-    
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+    const checkAuth = async () => {
+      setIsLoading(true);
+      try {
+        if (auth.currentUser) {
+          // Already authenticated
         setIsAuthenticated(true);
-        setUserId(user.uid);
-        addDebugLog(`User authenticated! UID: ${user.uid}`);
-        addDebugLog(`Auth provider: ${user.providerId || 'anonymous'}`);
-        addDebugLog(`Is anonymous: ${user.isAnonymous ? 'Yes' : 'No'}`);
+          setUserId(auth.currentUser.uid);
       } else {
+          // Try to sign in anonymously
+          console.log('No user signed in, attempting anonymous auth...');
+          const userCredential = await signInAnonymously(auth);
+          setIsAuthenticated(true);
+          setUserId(userCredential.user.uid);
+          console.log('Anonymous auth successful:', userCredential.user.uid);
+        }
+      } catch (err) {
+        console.error('Auth error:', err);
+        setError(`Authentication error: ${err instanceof Error ? err.message : String(err)}`);
         setIsAuthenticated(false);
-        setUserId(null);
-        addDebugLog('User is NOT authenticated');
-        
-        // Try to sign in anonymously again
-        addDebugLog('Attempting to sign in anonymously...');
-        import('firebase/auth').then(({ signInAnonymously }) => {
-          signInAnonymously(auth)
-            .then((result) => {
-              addDebugLog(`Anonymous sign-in successful: ${result.user.uid}`);
-            })
-            .catch((err) => {
-              const errMsg = err instanceof Error ? `${err.message} (${(err as any).code || 'unknown'})` : String(err);
-              addDebugLog(`Anonymous sign-in failed: ${errMsg}`);
-              setError(`Auth error: ${errMsg}`);
-            });
-        });
+      } finally {
+        setIsLoading(false);
       }
-    }, (err) => {
-      const errMsg = err instanceof Error ? err.message : String(err);
-      addDebugLog(`Auth state change error: ${errMsg}`);
-      setError(`Auth error: ${errMsg}`);
-      
-      // Try to get more details about the error
-      if (err && typeof err === 'object') {
-        const code = (err as any).code;
-        if (code) addDebugLog(`Error code: ${code}`);
-        
-        const serverResponse = (err as any).serverResponse;
-        if (serverResponse) addDebugLog(`Server response: ${JSON.stringify(serverResponse)}`);
-      }
-    });
+    };
 
-    return () => unsubscribe();
+    checkAuth();
   }, []);
 
   // Test write to Firestore

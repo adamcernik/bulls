@@ -133,7 +133,7 @@ export const signOut = async () => {
   }
 };
 
-// Set up auth state change listener (now we prefer Google auth over anonymous)
+// Set up auth state change listener with automatic anonymous sign-in
 if (!useMockData) {
   console.log('Setting up auth state change listener');
   onAuthStateChanged(auth, user => {
@@ -142,8 +142,16 @@ if (!useMockData) {
       console.log('User is anonymous:', user.isAnonymous);
     } else {
       console.log('Auth state changed: User is signed out');
-      // We don't automatically sign in anonymously anymore
-      // We'll wait for the user to click login
+      console.log('Attempting automatic anonymous sign-in...');
+      
+      // Auto sign-in anonymously
+      signInAnonymously(auth)
+        .then(cred => {
+          console.log('Auto-signed in anonymously with UID:', cred.user.uid);
+        })
+        .catch(err => {
+          console.error('Failed to auto-sign in anonymously:', err);
+        });
     }
   });
 }
