@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://adamcernik.github.io/bulls/static/css/main.f4d8895f.css",
+    "main.js": "https://adamcernik.github.io/bulls/static/js/main.fae6b64f.js",
+    "index.html": "https://adamcernik.github.io/bulls/index.html",
+    "main.f4d8895f.css.map": "https://adamcernik.github.io/bulls/static/css/main.f4d8895f.css.map",
+    "main.fae6b64f.js.map": "https://adamcernik.github.io/bulls/static/js/main.fae6b64f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4d8895f.css",
+    "static/js/main.fae6b64f.js"
+  ]
+}
